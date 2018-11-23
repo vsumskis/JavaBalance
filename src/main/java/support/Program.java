@@ -21,13 +21,23 @@ public class Program {
             doShowMenu();
             String item = dialog.input("Iveskite meniu punkta: ");
             switch (item) {
-                case "1": doAddCredit(); break;
-                case "2": doAddDebit(); break;
-                case "3": doShowAllTransactions(); break;
-                case "4": doShowbalance(); break;
-                case "0": if (!doExit()) break;
+                case "1":
+                    doAddCredit();
+                    break;
+                case "2":
+                    doAddDebit();
+                    break;
+                case "3":
+                    doShowAllTransactions();
+                    break;
+                case "4":
+                    doShowbalance();
+                    break;
+                case "0":
+                    if (!doExit()) break;
                     return;
-                default: dialog.println("Iveskite meniu punkta nuo 0 iki 4");
+                default:
+                    dialog.println("Iveskite meniu punkta nuo 0 iki 4");
                     break;
             }
         }
@@ -50,16 +60,24 @@ public class Program {
     }
 
     private void doAddCredit() {
-        String description = dialog.input("Iveskite pajamu komentara ");
-        double amount = Double.parseDouble(dialog.input("Iveskite suma: "));
-        doTransaction(description, amount);
+        try {
+            String description = dialog.input("Iveskite pajamu komentara ");
+            double amount = Double.parseDouble(dialog.input("Iveskite suma: "));
+            doTransaction(description, amount);
+        } catch (NumberFormatException e) {
+            dialog.println("Galima ivesti tik skaicius!");
+        }
+
     }
 
     private void doAddDebit() {
-        String description = dialog.input("Iveskite islaidu komentara ");
-        double amount = Double.parseDouble(dialog.input("Iveskite suma: "));
-        doTransaction(description, -amount);
-
+        try {
+            String description = dialog.input("Iveskite islaidu komentara ");
+            double amount = Double.parseDouble(dialog.input("Iveskite suma: "));
+            doTransaction(description, -amount);
+        } catch (NumberFormatException e) {
+            dialog.println("Galima ivesti tik skaicius!");
+        }
     }
 
     private void doTransaction(String description, double amount) {

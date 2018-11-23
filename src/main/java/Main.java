@@ -7,5 +7,4 @@ public class Main {
         Program program = new Program();
         program.start();
     }
-
 }

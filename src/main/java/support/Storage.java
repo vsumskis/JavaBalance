@@ -12,7 +12,7 @@ import java.io.IOException;
  * Tranzakciju knygos irasymas/skaitymas i/is tekstini faila.
  */
 class Storage {
-    private static final String FILENAME = "money.txt";
+    private final String FILENAME = "money.txt";
 
     Book load() {
         Book book = new Book();
